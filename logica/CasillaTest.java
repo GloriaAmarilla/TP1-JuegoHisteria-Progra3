@@ -20,13 +20,13 @@ public class CasillaTest {
 	//Los tests
 	
 	@Test
-	public void saberSiColorGrisInicial () {
+	public void saberSiColorGrisInicialTest () {
 //		System.out.println(cuadrito.consultarColor());
 		assertEquals (cuadrito.consultarColor(), gris);
 	}
 	
 	@Test
-	public void logroCambiarElColor() {
+	public void logroCambiarElColorTest() {
 		cuadrito.cambiarColor();
 //		System.out.println(cuadrito.consultarColor());
 		assertTrue (cuadrito.consultaSiPintado());
@@ -34,13 +34,18 @@ public class CasillaTest {
 	}
 	
 	@Test
-	public void logroVolverAlColorOriginal () {
+	public void logroVolverAlColorOriginalTest () {
 		cuadrito.cambiarColor();
 //		System.out.println(cuadrito.consultarColor());
 		cuadrito.volverOriginal();
 //		System.out.println(cuadrito.consultarColor());
 		assertFalse(cuadrito.consultaSiPintado());
 		assertEquals (cuadrito.consultarColor(), gris);
+	}
+	
+	@Test 
+	public void casillaDeUnColorTest() {
+		assertTrue(cuadrito.estaPintadaDe(gris));
 	}
 
 }
