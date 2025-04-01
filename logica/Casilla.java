@@ -2,7 +2,7 @@ package logica;
 
 import java.awt.Color;
 import java.util.ArrayList;
-import java.util.random.*;
+//import java.util.random.*;
 
 public class Casilla {
 
@@ -37,15 +37,24 @@ public class Casilla {
 		return pintado;
 	}
 	
-	public void cambiarColor() {
-		int posicion = (int) (Math.random() * 6) ;
-		//System.out.println(posicion);
-		colorActual = posiblesColoresDeCambio.get(posicion);
-		pintado = true;
+	public Color cambiarColor() {
+		if (consultaSiPintado())
+			volverOriginal();
+		else {
+			int posicionDeColor = (int) (Math.random() * 6) ;
+			//System.out.println(posicion);
+			colorActual = posiblesColoresDeCambio.get(posicionDeColor);
+			pintado = true;
+		}
+		return colorActual;
 	}
 	
 	public void volverOriginal () {
 		colorActual = grisOriginal;
 		pintado = false;
+	}
+	
+	public boolean estaPintadaDe (Color color) {
+		return colorActual.equals(color);
 	}
 }
